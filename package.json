@@ -1,0 +1,27 @@
+{
+  "name": "movie-search",
+  "version": "1.0.0",
+  "description": "A simple node app, to fetch movie details from an API",
+  "main": "movie.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/burasu/movie-search.git"
+  },
+  "keywords": [
+    "movie",
+    "search",
+    "database"
+  ],
+  "author": "Blas Fernández",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/burasu/movie-search/issues"
+  },
+  "homepage": "https://github.com/burasu/movie-search#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
