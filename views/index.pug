@@ -1,0 +1,10 @@
+doctype html
+html(lang='en')
+  head
+    title Movie Search
+
+  body
+    h1 Movie Search
+    form(method='post', action='/search')
+      input(type='text', name='movie', placeholder='Search for a movie')
+      input(type='submit', value='Find')
