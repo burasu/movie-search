@@ -21,14 +21,21 @@ let url_images = "http://image.tmdb.org/t/p/original";
 
 app.get("/", (req, res) => {
   const search = req.query.search;
+  let error_code = 0;
   let movies = "";
 
   if (search != undefined) {
     url = `${url}/search/movie?api_key=${API_KEY}&query=${search}&language=es-ES`;
     request(url, (error, response, body) => {
       movies = JSON.parse(body);
-      console.log(movies);
-      res.render("index", { movies });
+      if (movies.status_code === 7) {
+        error_code = movies.status_code;
+        console.log("error de api");
+        res.send("Error autentificación de api");
+      } else {
+        console.log(body);
+        res.render("index", { movies, error_code });
+      }
     });
   } else {
     res.render("index");
