@@ -5,6 +5,10 @@ html(lang='en')
 
   body
     h1 Movie Search
-    form(method='post', action='/search')
-      input(type='text', name='movie', placeholder='Search for a movie')
+    form(method='get', action='/')
+      input(type='text', name='search', placeholder='Search for a movie')
       input(type='submit', value='Find')
+    if seach
+      ul
+        each movie in seach
+          li= movie.title
