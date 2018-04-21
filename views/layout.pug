@@ -8,11 +8,11 @@ html(lang='en')
     // Font Awesome
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
     // Bootstrap core CSS
-    link(href='css/bootstrap.min.css', rel='stylesheet')
+    link(href='/css/bootstrap.min.css', rel='stylesheet')
     // Material Design Bootstrap
-    link(href='css/mdb.min.css', rel='stylesheet')
+    link(href='/css/mdb.min.css', rel='stylesheet')
     // Your custom styles (optional)
-    link(href='css/style.css', rel='stylesheet')
+    link(href='/css/style.css', rel='stylesheet')
   body
   
     header  
@@ -20,7 +20,19 @@ html(lang='en')
           a.navbar-brand(href='/')
               strong Movie Search
 
-    block main
+    main
+      .container(style="min-height: 850px")
+        .row.mt-3.pt-5
+          .col
+            form(method='get', action='/')
+              .md-form.form-lg
+                i.fa.fa-search.prefix.grey-text
+                input#input_movie.form-control.form-control-lg(type='text', name='search')
+                label(for='input_movie') Buscar por película
+              .text-center.mt-4
+                button.btn.btn-primary(type='submit', value='Find') Buscar
+
+        block content
 
     footer.page-footer.font-small.blue.pt-4.mt-4
       .footer-copyright.py-3.text-center
@@ -30,10 +42,10 @@ html(lang='en')
 
     // SCRIPTS
     // JQuery
-    script(type='text/javascript', src='js/jquery-3.2.1.min.js')
+    script(type='text/javascript', src='/js/jquery-3.2.1.min.js')
     // Bootstrap tooltips
-    script(type='text/javascript', src='js/popper.min.js')
+    script(type='text/javascript', src='/js/popper.min.js')
     // Bootstrap core JavaScript
-    script(type='text/javascript', src='js/bootstrap.min.js')
+    script(type='text/javascript', src='/js/bootstrap.min.js')
     // MDB core JavaScript
-    script(type='text/javascript', src='js/mdb.min.js')
+    script(type='text/javascript', src='/js/mdb.min.js')

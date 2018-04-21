@@ -1,0 +1,28 @@
+extends layout.pug
+
+block content
+  if (total_results != 0)
+    .row
+      .col-md-12
+        h2 Tu búsqueda devolvió #{total_results} peliculas.
+      .clearfix
+    .row
+      each movie in movies.results
+        .col-md-4
+          .card
+            .view.overlay
+              img.card-img-top(src= url_images_w500 + movie.poster_path, alt= movie.title)
+              a(href=`/movie/${movie.id}`)
+                .mask.rgba-white-slight
+            .card-body
+              h4.card-title
+                a(href=`/movie/${movie.id}`)= movie.title
+
+  else
+    .row.mt-5.pt-5
+      .col.text-center
+        h2 
+          | 
+          strong Upps! 
+          | Parece que la película que quieres buscar no existe.
+        p ¿Por qué no pruebas de otra forma?

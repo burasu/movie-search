@@ -1,0 +1,16 @@
+extends layout.pug
+
+block content
+  .row
+    .col-md-12
+      .card
+        .col
+          .view.overlay
+            img.card-img-top(src= url_images_w500 + movie.poster_path, alt= movie.title)
+        .col
+          h2 #{movie.title}
+          p #{movie.overview}
+  //-           .mask.rgba-white-slight
+  //-       .card-body
+  //-         h4.card-title
+  //-           a(href=`/movie/${movie.id}`)= movie.title

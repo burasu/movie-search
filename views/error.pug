@@ -1,0 +1,7 @@
+extends layout.pug
+
+block content
+  .row.mt-5.pt-5
+    .col.text-center
+      h2= `${error_message} - Status: ${error_status_code}`
+      p= error_stack

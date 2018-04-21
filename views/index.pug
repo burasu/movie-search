@@ -1,47 +1,22 @@
 extends layout.pug
 
-block main
-  main
-    if movies
-      .container
-        .row.mt-3.pt-5
-          .col
-            form(method='get', action='/')
-              .md-form.form-lg
-                i.fa.fa-search.prefix.grey-text
-                input#input_movie.form-control.form-control-lg(type='text', name='search')
-                label(for='input_movie') Search for a movie
-              .text-center.mt-4
-                button.btn.btn-primary(type='submit', value='Find') Search
-
-        .row
-          each movie in movies.results
-            .col-md-4
-              .card
-                .view.overlay
-                  img.card-img-top(src= url_images_w500 + movie.poster_path, alt= movie.title)
-                  a(href=`/movie/${movie.id}`)
-                    .mask.rgba-white-slight
-                .card-body
-                  h4.card-title
-                    a(href=`/movie/${movie.id}`)= movie.title
-
-    else
-      .container(style='height:820px;')
-        .row.mt-5.pt-5
-          .col
-            form(method='get', action='/')
-              .md-form.form-lg
-                i.fa.fa-search.prefix.grey-text
-                input#materialFormRegisterNameEx.form-control.form-control-lg(type='text', name='search')
-                label(for='materialFormRegisterNameEx') Search for a movie
-              .text-center.mt-4
-                button.btn.btn-primary(type='submit', value='Find') Search
-
-
-            .col.text-center
-              h2 This Navbar is fixed
-              h5 It will always stay visible on the top, even when you scroll down
-              br
-              p
-                | Full page intro with background image will be always displayed in full screen mode, regardless of device
+block content
+  .row.mt-5.pt-5
+    .col.text-center
+      h2 
+        | Bienvenido a 
+        strong Movie Search
+      h5 Este sitio es sólo de pruebas
+      br
+      p
+        | Desarrollado usando 
+        a(href='https://nodejs.org/') Node.js 
+        | y 
+        a(href='http://expressjs.com/') Express 
+        | y atacando a la API de 
+        a(href='https://www.themoviedb.org') themoviedb.org 
+        | obtiene los datos de las peliculas buscadas.
+      p
+        | El estilo se ha conseguido usando 
+        a(href='https://mdbootstrap.com/') Material Design for Bootstrap 4
+        | .
