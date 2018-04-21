@@ -1,19 +1,47 @@
-doctype html
-html(lang='en')
-  head
-    title Movie Search
+extends layout.pug
 
-  body
-    h1 Movie Search
-    form(method='get', action='/')
-      input(type='text', name='search', placeholder='Search for a movie', autofocus)
-      input(type='submit', value='Find')
+block main
+  main
     if movies
-      table(border=1)
-        tr
-          td Título
-          td Año Lanzamiento
-        each movie in movies.results
-          tr
-            td= movie.title
-            td= movie.release_date
+      .container
+        .row.mt-3.pt-5
+          .col
+            form(method='get', action='/')
+              .md-form.form-lg
+                i.fa.fa-search.prefix.grey-text
+                input#input_movie.form-control.form-control-lg(type='text', name='search')
+                label(for='input_movie') Search for a movie
+              .text-center.mt-4
+                button.btn.btn-primary(type='submit', value='Find') Search
+
+        .row
+          each movie in movies.results
+            .col-md-4
+              .card
+                .view.overlay
+                  img.card-img-top(src= url_images_w500 + movie.poster_path, alt= movie.title)
+                  a(href=`/movie/${movie.id}`)
+                    .mask.rgba-white-slight
+                .card-body
+                  h4.card-title
+                    a(href=`/movie/${movie.id}`)= movie.title
+
+    else
+      .container(style='height:820px;')
+        .row.mt-5.pt-5
+          .col
+            form(method='get', action='/')
+              .md-form.form-lg
+                i.fa.fa-search.prefix.grey-text
+                input#materialFormRegisterNameEx.form-control.form-control-lg(type='text', name='search')
+                label(for='materialFormRegisterNameEx') Search for a movie
+              .text-center.mt-4
+                button.btn.btn-primary(type='submit', value='Find') Search
+
+
+            .col.text-center
+              h2 This Navbar is fixed
+              h5 It will always stay visible on the top, even when you scroll down
+              br
+              p
+                | Full page intro with background image will be always displayed in full screen mode, regardless of device

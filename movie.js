@@ -15,9 +15,10 @@ app.use("/", express.static("public"));
 app.set("view engine", "pug");
 
 // The Movie DB parameters
-const API_KEY = "API-KEY";
+const API_KEY = "API_KEY";
 let url = "https://api.themoviedb.org/3";
-let url_images = "http://image.tmdb.org/t/p/original";
+const url_images_original = "http://image.tmdb.org/t/p/original";
+const url_images_w500 = "http://image.tmdb.org/t/p/w500";
 
 app.get("/", (req, res) => {
   const search = req.query.search;
@@ -34,12 +35,24 @@ app.get("/", (req, res) => {
         res.send("Error autentificación de api");
       } else {
         console.log(body);
-        res.render("index", { movies, error_code });
+        res.render("index", {
+          movies,
+          error_code,
+          url_images_w500
+        });
       }
     });
   } else {
     res.render("index");
   }
+});
+
+app.get('/movie/:id', (req, res) => {
+  const {
+    id
+  } = req.params;
+
+  res.send(`La id de la pelicula es ${id}`);
 });
 
 app.listen(3000, () => {

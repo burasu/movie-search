@@ -10,11 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/burasu/movie-search.git"
   },
-  "keywords": [
-    "movie",
-    "search",
-    "database"
-  ],
+  "keywords": ["movie", "search", "database"],
   "author": "Blas Fernández",
   "license": "MIT",
   "bugs": {
