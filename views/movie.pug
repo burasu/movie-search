@@ -1,16 +1,66 @@
 extends layout.pug
 
 block content
-  .row
-    .col-md-12
-      .card
-        .col
-          .view.overlay
-            img.card-img-top(src= url_images_w500 + movie.poster_path, alt= movie.title)
-        .col
-          h2 #{movie.title}
-          p #{movie.overview}
-  //-           .mask.rgba-white-slight
-  //-       .card-body
-  //-         h4.card-title
-  //-           a(href=`/movie/${movie.id}`)= movie.title
+
+  include includes/header_movie.pug
+
+  // =============== START OF PAGE HEADER ===============
+  section.movie-detail-intro.overlay-gradient.ptb100(style= `background: url(${url_images_original + movie.backdrop_path})`)
+  // =============== END OF PAGE HEADER ===============
+
+  // =============== START OF MOVIE DETAIL ===============
+  section.movie-detail-intro2
+    .container
+      .row
+        .col-md-12
+          .movie-poster
+            img(src= url_images_w500 + movie.poster_path, alt= movie.title)
+
+          .movie-details
+            h3.title= movie.title
+
+            ul.movie-subtext
+              li PENDIENTE
+              li= runtime
+              li= genres
+              li= release_date
+              |  (#{movie.production_countries[0].name})
+
+            // Rating
+            .rating.mt10
+              i.fa.fa-star &nbsp;
+              span= movie.vote_average
+              | /10
+
+          .clearfix
+  // =============== END OF MOVIE DETAIL ===============
+
+  // =============== START OF MOVIE DETAIL MAIN SECTION ===============
+  section.movie-detail-main.ptb100
+    .container
+      .row
+        // Start of Movie Main
+        .col-lg-8.col-sm-12
+          .inner.pr50
+            // Storyline
+            .storyline
+              h3.title Sipnosis
+
+              p= movie.overview
+        // End of Movie Main
+
+        // Start of sidebar
+        .col-lg-4.col-sm-12
+          .sidebar
+            // Start of Details Widget
+            aside.widget.widget-movie-details
+              h3.title Datos
+
+              ul
+                li
+                  strong Fecha del estreno: 
+                  | #{release_date}
+                li
+                  strong País: 
+                  | #{movie.production_countries[0].name}
+  // =============== END OF MOVIE DETAIL MAIN SECTION ===============

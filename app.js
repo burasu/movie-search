@@ -22,7 +22,6 @@ app.use("/movie", movieRoutes);
 app.use("/about", aboutRoutes);
 
 app.use((req, res, next) => {
-  console.log("b");
   const err = new Error("Not Found");
   err.status_code = 404;
   next(err);
@@ -35,28 +34,23 @@ app.use((err, req, res, next) => {
 
   // API INVALIDA
   if (err.status_code === 7) {
-    console.log("c");
     error_message = err.status_message;
     error_stack = "";
     error_status_code = 401;
   } else if (err.status_code === 34) {
-    console.log("d");
     error_message = "El recurso que solicitó no se pudo encontrar.";
     error_stack = "";
     error_status_code = 404;
-    console.log(err);
   } else if (err.status_code === 404) {
-    console.log("e");
     error_message = "El recurso que solicitó no se pudo encontrar.";
     error_stack = "";
     error_status_code = 404;
   } else {
-    console.log("f");
     error_message = err.status_message;
     error_stack = "";
     error_status_code = err.status_code;
   }
-  console.log("pasa por aqui");
+
   res.render("error", {
     error_message,
     error_stack,

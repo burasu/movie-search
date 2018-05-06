@@ -4,7 +4,11 @@ const request = require("request");
 const querystring = require("querystring");
 let themoviedb = require("../themoviedb.js");
 
-router.get("/", (req, res, next) => {
+router.get("/", (req, res) => {
+  res.render('index');
+});
+
+router.get("/movies", (req, res, next) => {
   const search = req.query.search;
   let total_results = 0;
 

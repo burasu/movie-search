@@ -19,8 +19,8 @@ html(lang='en')
     // =============== END OF WRAPPER ===============
     // =============== START OF GENERAL SEARCH WRAPPER ===============
     .general-search-wrapper
-      form.general-search(role='search', method='get', action='#')
-        input(type='text', placeholder='Introduzca el título de una Película o una Serie de TV')
+      form.general-search(role='search', method='get', action='/movies')
+        input(name='search', type='text', placeholder='Introduzca el título de una Película')
         span#general-search-close.ti-close.toggle-search
     // =============== END OF GENERAL SEARCH WRAPPER ===============
     // ===== Start of Back to Top Button =====

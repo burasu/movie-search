@@ -1,28 +1,67 @@
 extends layout.pug
 
 block content
-  if (total_results != 0)
-    .row
-      .col-md-12
-        h2 Tu búsqueda devolvió #{total_results} peliculas.
-      .clearfix
-    .row
-      each movie in movies.results
-        .col-md-4
-          .card
-            .view.overlay
-              img.card-img-top(src= url_images_w500 + movie.poster_path, alt= movie.title)
-              a(href=`/movie/${movie.id}`)
-                .mask.rgba-white-slight
-            .card-body
-              h4.card-title
-                a(href=`/movie/${movie.id}`)= movie.title
 
+  include includes/header.pug
+
+  // =============== START OF PAGE HEADER ===============
+  section.page-header.overlay-gradient(style='background: url(https://images.unsplash.com/photo-1512149154706-f9b30ded17ad?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0ec8dfaf1252ed0dd130b999c8815d9f&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb);')
+    .container
+      .inner
+        h2.title Películas
+        ol.breadcrumb
+          li
+            a(href='/') Inicio
+          li Películas
+  // =============== END OF PAGE HEADER ===============
+  
+  // =============== START OF MAIN ===============
+  if (total_results != 0)
+    main.bg-light.ptb100
+      .container
+        // Start of Movie List
+        .row      
+          each movie in movies.results
+            // Movie List Item
+            .col-lg-4.col-md-6.col-sm-12
+              .movie-box-2.mb30
+                .listing-container
+                  // Movie List Image
+                  .listing-image
+
+                    // Rating
+                    .stars
+                      .rating
+                        i.fa.fa-star &nbsp;
+                        span= movie.vote_average
+                        | /10
+                  
+                    img(src=url_images_w500 + movie.poster_path, alt=movie.title)
+                  // Movie List Content
+                  .listing-content
+                    .inner
+                      h3.title= movie.title
+
+                      p.overview= movie.overview
+
+                      a.btn.btn-main.btn-effect(href=`/movie/${movie.id}`) detalles
   else
-    .row.mt-5.pt-5
-      .col.text-center
-        h2 
-          | 
-          strong Upps! 
-          | Parece que la película que quieres buscar no existe.
-        p ¿Por qué no pruebas de otra forma?
+    main.page-not-found.ptb100
+      .container
+        // Start of Movie List
+        .row      
+          .col-md-12
+            h2 Upps!
+            h3 Parece que la película que quieres buscar no existe.
+
+            p ¿Por qué no pruebas de otra forma?
+
+            // ===== START OF SEARCH FORM =====
+            form#search-form-1(method="get" action="/movies")
+              .row.justify-content-center
+                .col-md-8.col-sm-10.col-12
+                  .form-group
+                    input#search-keyword.form-control(name='search', type='text', value='', placeholder='Introduzca el título de una Película')
+                    button.btn.btn-main.btn-effect(type='submit')
+                      i.fa.fa-search
+            // ===== END OF SEARCH FORM =====

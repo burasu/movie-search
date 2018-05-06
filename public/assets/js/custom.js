@@ -14,31 +14,44 @@ Author URI: gnodesign.com
 (function ($) {
     "use strict";
 
-    
-    
     /*----------------------------------------------------
       LOADING PAGE
     ----------------------------------------------------*/
     $(window).on('load', function () {
         var loading = $('.loading');
-        loading.delay(1000).fadeOut(1000);        
+        loading.delay(1000).fadeOut(1000);
     }); // end of window load function
 
 
 
 
     $(document).ready(function () {
-                
+
+        /*----------------------------------------------------
+          MINIMIZAR PARRAFO
+        ----------------------------------------------------*/
+        var minimized_elements = $('p.overview');
+
+        minimized_elements.each(function () {
+            var t = $(this).text();
+            if (t.length < 100) return;
+
+            $(this).html(
+                t.slice(0, 100) + '<span>... </span>'
+            );
+
+        });
+
         /*----------------------------------------------------
           STICKY HEADER
-        ----------------------------------------------------*/    
-        if ( $('header').hasClass('sticky') ) {
+        ----------------------------------------------------*/
+        if ($('header').hasClass('sticky')) {
 
             $("header.sticky").clone(true).addClass('cloned').insertAfter("header.sticky").removeClass('header-transparent text-white');
 
             var stickyHeader = document.querySelector(".sticky.cloned");
             var stickyHeaderHeight = $("header.sticky").height();
-            
+
             var headroom = new Headroom(stickyHeader, {
                 "offset": stickyHeaderHeight + 100,
                 "tolerance": 0
@@ -57,24 +70,24 @@ Author URI: gnodesign.com
             });
 
         }
-        
-        
-        
-        
+
+
+
+
         /*----------------------------------------------------
            MAIN MENU FOR RESPONSIVE MODE
          ----------------------------------------------------*/
         if ($("nav#main-mobile-nav").length > 0) {
             function mmenuInit() {
-                if ( $(window).width() <= '1024' ) {
+                if ($(window).width() <= '1024') {
 
                     // Clone the main menu, remove all unneeded classes and insert on top
                     $("#main-menu").clone().addClass("mmenu-init").prependTo("#main-mobile-nav").removeAttr('id').removeClass('navbar-nav mx-auto').find('li').removeAttr('class').find('a').removeAttr('class data-toggle aria-haspopup aria-expanded').siblings('ul.dropdown-menu').removeAttr('class');
 
-                    var main_menu = $( 'nav#main-mobile-nav' );
+                    var main_menu = $('nav#main-mobile-nav');
 
                     main_menu.mmenu({
-                        extensions: [ 'fx-menu-zoom', 'position-right' ],
+                        extensions: ['fx-menu-zoom', 'position-right'],
                         counters: true
                     }, {
                         offCanvas: {
@@ -85,22 +98,22 @@ Author URI: gnodesign.com
 
 
                     var menu_toggler = $("#mobile-nav-toggler");
-                    var menu_API = main_menu.data( "mmenu" );
+                    var menu_API = main_menu.data("mmenu");
 
-                    menu_toggler.on( "click", function() {
-                       menu_API.open();
+                    menu_toggler.on("click", function () {
+                        menu_API.open();
                     });
 
-                    menu_API.bind( "open:finish", function() {
-                       setTimeout(function() {
-                          menu_toggler.addClass( "is-active" );
-                       }, 100);
+                    menu_API.bind("open:finish", function () {
+                        setTimeout(function () {
+                            menu_toggler.addClass("is-active");
+                        }, 100);
                     });
 
-                    menu_API.bind( "close:finish", function() {
-                       setTimeout(function() {
-                          menu_toggler.removeClass( "is-active" );
-                       }, 100);
+                    menu_API.bind("close:finish", function () {
+                        setTimeout(function () {
+                            menu_toggler.removeClass("is-active");
+                        }, 100);
                     });
                 }
             }
@@ -112,10 +125,10 @@ Author URI: gnodesign.com
                 mmenuInit();
             });
         }
-        
-        
-        
-        
+
+
+
+
         /*----------------------------------------------------
            BUTTON EFFECT
          ----------------------------------------------------*/
@@ -156,16 +169,16 @@ Author URI: gnodesign.com
                 left: x + 'px'
             }).addClass("rippleEffect");
         });
-        
-        
-        
-        
+
+
+
+
         /*----------------------------------------------------
            BACK TO TOP
          ----------------------------------------------------*/
-        var pxShow=100;
-        var scrollSpeed=500;
-        
+        var pxShow = 100;
+        var scrollSpeed = 500;
+
         $(window).scroll(function () {
             if ($(window).scrollTop() >= pxShow) {
                 $("#backtotop").addClass('visible');
@@ -173,51 +186,51 @@ Author URI: gnodesign.com
                 $("#backtotop").removeClass('visible');
             }
         });
-        
+
         $('#backtotop a').on('click', function () {
             $('html, body').animate({
                 scrollTop: 0
             }, scrollSpeed);
             return false;
         });
-        
-        
-        
-        
+
+
+
+
         /*----------------------------------------------------
           GENERAL SEARCH FORM
         ----------------------------------------------------*/
-        var search_btn = $( '.extra-nav .toggle-search' );
-        var general_searchform = $( '.general-search-wrapper' );
-        var search_close = $( '.general-search-wrapper .toggle-search' );
-        
-        search_btn.on( 'click', function(){
+        var search_btn = $('.extra-nav .toggle-search');
+        var general_searchform = $('.general-search-wrapper');
+        var search_close = $('.general-search-wrapper .toggle-search');
+
+        search_btn.on('click', function () {
             general_searchform.addClass('open');
         });
-        
-        search_close.on( 'click', function(){
+
+        search_close.on('click', function () {
             general_searchform.removeClass('open');
         });
-        
-        
-        
-        
+
+
+
+
         /*----------------------------------------------------
           REVOLUTION SLIDER
         ----------------------------------------------------*/
-            
+
         /* ----- Home Page 1 ----- */
         if ($("#fullscreen-slider").length > 0) {
             var tpj = jQuery;
             var revapi24;
-            
+
             tpj(document).ready(function () {
                 if (tpj("#fullscreen-slider").revolution == undefined) {
                     revslider_showDoubleJqueryError("#fullscreen-slider");
                 } else {
                     revapi24 = tpj("#fullscreen-slider").show().revolution({
                         sliderType: "standard",
-						jsFileLocation:"assets/revolution/js/",
+                        jsFileLocation: "assets/revolution/js/",
                         sliderLayout: "fullscreen",
                         dottedOverlay: "none",
                         delay: 9000,
@@ -285,25 +298,25 @@ Author URI: gnodesign.com
                         }
                     });
                 }
-                
+
                 //if(revapi24) revapi24.revSliderSlicey();
             });
         };
-        
-        
+
+
         /* ----- Home Page 2 ----- */
         if ($("#fullwidth-slider").length > 0) {
             var tpj = jQuery;
             var revapi24;
-            
-            
+
+
             tpj(document).ready(function () {
                 if (tpj("#fullwidth-slider").revolution == undefined) {
                     revslider_showDoubleJqueryError("#fullwidth-slider");
                 } else {
                     revapi24 = tpj("#fullwidth-slider").show().revolution({
                         sliderType: "hero",
-						jsFileLocation:"assets/revolution/js/",
+                        jsFileLocation: "assets/revolution/js/",
                         sliderLayout: "fullwidth",
                         dottedOverlay: "none",
                         delay: 9000,
@@ -345,26 +358,26 @@ Author URI: gnodesign.com
                         }
                     });
                 }
-                
+
                 //if(revapi24) revapi24.revSliderSlicey();
             });
-            
+
         };
-        
-        
+
+
         /* ----- Home Page 3 ----- */
         if ($("#hero-slider").length > 0) {
             var tpj = jQuery;
             var revapi24;
-            
-            
+
+
             tpj(document).ready(function () {
                 if (tpj("#hero-slider").revolution == undefined) {
                     revslider_showDoubleJqueryError("#hero-slider");
                 } else {
                     revapi24 = tpj("#hero-slider").show().revolution({
                         sliderType: "hero",
-						jsFileLocation:"assets/revolution/js/",
+                        jsFileLocation: "assets/revolution/js/",
                         sliderLayout: "fullwidth",
                         dottedOverlay: "none",
                         delay: 9000,
@@ -406,26 +419,26 @@ Author URI: gnodesign.com
                         }
                     });
                 }
-                
+
                 //if(revapi24) revapi24.revSliderSlicey();
             });
-            
+
         };
-        
-        
+
+
         /* ----- Home Page 4 ----- */
         if ($("#hero-slider2").length > 0) {
             var tpj = jQuery;
             var revapi24;
-            
-            
+
+
             tpj(document).ready(function () {
                 if (tpj("#hero-slider2").revolution == undefined) {
                     revslider_showDoubleJqueryError("#hero-slider2");
                 } else {
                     revapi24 = tpj("#hero-slider2").show().revolution({
                         sliderType: "hero",
-						jsFileLocation:"assets/revolution/js/",
+                        jsFileLocation: "assets/revolution/js/",
                         sliderLayout: "fullwidth",
                         dottedOverlay: "none",
                         delay: 9000,
@@ -467,41 +480,41 @@ Author URI: gnodesign.com
                         }
                     });
                 }
-                
+
                 //if(revapi24) revapi24.revSliderSlicey();
             });
-            
+
         };
-        
-        
-        
-        
+
+
+
+
         /*----------------------------------------------------
           POPUP FORMS
         ----------------------------------------------------*/
-        $(".signUpClick").on('click' , function() {  
+        $(".signUpClick").on('click', function () {
             $('.signin-wrapper, .forgetpassword-wrapper').fadeOut(300);
             $('.signup-wrapper').delay(300).fadeIn();
         });
-        
-        $(".signInClick").on('click' , function() {  
+
+        $(".signInClick").on('click', function () {
             $('.forgetpassword-wrapper, .signup-wrapper').fadeOut(300);
             $('.signin-wrapper').delay(300).fadeIn();
         });
-        
-        $(".forgetPasswordClick").on('click' , function() { 
+
+        $(".forgetPasswordClick").on('click', function () {
             $('.signup-wrapper, .signin-wrapper').fadeOut(300);
             $('.forgetpassword-wrapper').delay(300).fadeIn();
         });
-        
-        $(".cancelClick").on('click' , function() { 
+
+        $(".cancelClick").on('click', function () {
             $('.forgetpassword-wrapper, .signup-wrapper').fadeOut(300);
             $('.signin-wrapper').delay(300).fadeIn();
         });
-        
-        
-        
-        
+
+
+
+
         /*----------------------------------------------------
           MAGNIFIC POP UP
         ----------------------------------------------------*/
@@ -520,18 +533,18 @@ Author URI: gnodesign.com
             removalDelay: 0,
             mainClass: 'mfp-fade',
 
-            gallery:{
-                enabled:true
+            gallery: {
+                enabled: true
             },
 
             callbacks: {
-                buildControls: function() {
-                     this.contentContainer.append(this.arrowLeft.add(this.arrowRight));
+                buildControls: function () {
+                    this.contentContainer.append(this.arrowLeft.add(this.arrowRight));
                 }
             }
         });
-        
-        
+
+
         // Init for popup-with-zoom-anim class
         $('.popup-with-zoom-anim').magnificPopup({
             type: 'inline',
@@ -548,8 +561,8 @@ Author URI: gnodesign.com
             removalDelay: 300,
             mainClass: 'my-mfp-zoom-in'
         });
-        
-        
+
+
         // Init for images
         $('.mfp-image').magnificPopup({
             type: 'image',
@@ -559,8 +572,8 @@ Author URI: gnodesign.com
                 verticalFit: true
             }
         });
-        
-        
+
+
         // Init for image gallery
         $('.image-gallery').magnificPopup({
             delegate: 'a',
@@ -581,8 +594,8 @@ Author URI: gnodesign.com
             }
 
         });
-        
-        
+
+
         // Init for youtube, vimeo and google maps
         $('.play-video, .popup-gmaps').magnificPopup({
             disableOn: 700,
@@ -593,68 +606,68 @@ Author URI: gnodesign.com
 
             fixedContentPos: false
         });
-        
-        
-        
-        
+
+
+
+
         /*----------------------------------------------------
           OWL CAROUSEL
         ----------------------------------------------------*/
-        
+
         /***** Latest Movies *****/
-        
-        var latest_movies = $( 'section.latest-movies .latest-movies-slider');
-        
+
+        var latest_movies = $('section.latest-movies .latest-movies-slider');
+
         latest_movies.owlCarousel({
             loop: true,
             margin: 15,
             autoplay: false, //change this to true if you want the slider to auto play
             nav: false,
             dots: true,
-            responsive:{
-                0:{
+            responsive: {
+                0: {
                     items: 1,
                     stagePadding: 10
                 },
-                600:{
+                600: {
                     items: 3
                 },
-                1000:{
+                1000: {
                     items: 4
                 }
             }
         });
-        
-        
+
+
         /***** Latest TV Shows *****/
-        
-        var latest_tvshows = $( 'section.latest-tvshows .latest-tvshows-slider');
-        
+
+        var latest_tvshows = $('section.latest-tvshows .latest-tvshows-slider');
+
         latest_tvshows.owlCarousel({
             loop: true,
             margin: 15,
             autoplay: false, //change this to true if you want the slider to auto play
             nav: false,
             dots: true,
-            responsive:{
-                0:{
+            responsive: {
+                0: {
                     items: 1,
                     stagePadding: 10
                 },
-                600:{
+                600: {
                     items: 3
                 },
-                1000:{
+                1000: {
                     items: 4
                 }
             }
         });
-        
-        
+
+
         /***** Latest Releases *****/
-        
-        var latest_releases = $( '.latest-releases-slider');
-        
+
+        var latest_releases = $('.latest-releases-slider');
+
         latest_releases.owlCarousel({
             loop: true,
             margin: 30,
@@ -662,55 +675,55 @@ Author URI: gnodesign.com
             autoplay: false, //change this to true if you want the slider to auto play
             nav: false,
             dots: false,
-            responsive:{
-                0:{
+            responsive: {
+                0: {
                     items: 1,
                 },
-                600:{
+                600: {
                     items: 2,
                 },
-                1000:{
+                1000: {
                     items: 3,
                 },
-                1200:{
+                1200: {
                     items: 4,
                 },
-                1500:{
+                1500: {
                     items: 5,
                 }
             }
         });
-        
-        
+
+
         /***** Recommended Movies & TV Shows *****/
-        
-        var recommended = $( 'section.recommended-movies .recommended-slider');
-        
+
+        var recommended = $('section.recommended-movies .recommended-slider');
+
         recommended.owlCarousel({
             loop: true,
             margin: 15,
             autoplay: false, //change this to true if you want the slider to auto play
             nav: false,
             dots: true,
-            responsive:{
-                0:{
+            responsive: {
+                0: {
                     items: 1,
                     stagePadding: 10
                 },
-                600:{
+                600: {
                     items: 3
                 },
-                1000:{
+                1000: {
                     items: 4
                 }
             }
         });
-        
-        
+
+
         /***** Testimonials *****/
-        
-        var testimonials = $( '.testimonial-slider');
-        
+
+        var testimonials = $('.testimonial-slider');
+
         testimonials.owlCarousel({
             loop: true,
             margin: 15,
@@ -719,12 +732,12 @@ Author URI: gnodesign.com
             dots: true,
             items: 1,
         });
-        
+
         /*----------------------------------------------------
           INITIALIZE COUNT UP
         ----------------------------------------------------*/
         var counter_up = $('section.counter');
-        
+
         counter_up.on('inview', function (event, visible, visiblePartX, visiblePartY) {
             if (visible) {
                 $(this).find('.counter-item').each(function () {
@@ -737,20 +750,20 @@ Author URI: gnodesign.com
                 $(this).unbind('inview');
             }
         });
-        
-        
-        
-        
+
+
+
+
         /*----------------------------------------------------
           PARALLAX
         ----------------------------------------------------*/
-        if("ontouchstart"in window){
-            document.documentElement.className=document.documentElement.className+" touch";
+        if ("ontouchstart" in window) {
+            document.documentElement.className = document.documentElement.className + " touch";
         }
-        
+
         function parallaxBG() {
             $('.parallax').prepend('<div class="parallax-overlay"></div>');
-            
+
             $(".parallax").each(function () {
                 var attrImage = $(this).attr('data-background');
                 var attrColor = $(this).attr('data-color');
@@ -784,7 +797,7 @@ Author URI: gnodesign.com
                 var diff = 100;
                 diff = diff ? diff : 0;
                 var remainingH = 0;
-                
+
                 if (path.hasClass("parallax") && !$("html").hasClass("touch")) {
                     remainingH = windowH - contH;
                 }
@@ -814,7 +827,7 @@ Author URI: gnodesign.com
                 var height = path.height();
                 var top = path.offset().top;
                 var bottom = top + height;
-                
+
                 if (bottomWindow > top && topWindow < bottom) {
                     var imgH = path.data("resized-imgH");
                     var min = 0;
@@ -823,7 +836,7 @@ Author URI: gnodesign.com
                     top = top - overflowH;
                     bottom = bottom + overflowH;
                     var value = 0;
-                    
+
                     if ($('.parallax').is(".titlebar")) {
                         value = min + (max - min) * (currentWindow - top) / (bottom - top) * 2;
                     } else {
@@ -841,10 +854,10 @@ Author URI: gnodesign.com
             $(window).scroll(parallaxPosition);
             parallaxPosition();
         }
-        
-        
-        
-        
+
+
+
+
         /*----------------------------------------------------
           MAILCHIMP
         ----------------------------------------------------*/
@@ -869,36 +882,36 @@ Author URI: gnodesign.com
                 }, 5000);
             }
         }
-        
-        
-        
-        
+
+
+
+
         /*----------------------------------------------------
           TOOLTIP
         ----------------------------------------------------*/
         $('[data-toggle="tooltip"]').tooltip({
-           animated: 'fade', 
-           container: 'body'
+            animated: 'fade',
+            container: 'body'
         });
-        
-        
-        
-        
+
+
+
+
         /*----------------------------------------------------
           COUNTDOWN
         ----------------------------------------------------*/
-        $("#countdown").countdown('2020/12/12', function(event) {
-			var $this = $(this).html(event.strftime(''
-                + '<div><span>%D</span> <i>Days</i></div>'
-                + '<div><span>%H</span> <i>Hours</i></div> '
-                + '<div><span>%M</span> <i>Minutes</i></div> '
-                + '<div><span>%S</span> <i>Seconds</i></div>'
+        $("#countdown").countdown('2020/12/12', function (event) {
+            var $this = $(this).html(event.strftime('' +
+                '<div><span>%D</span> <i>Days</i></div>' +
+                '<div><span>%H</span> <i>Hours</i></div> ' +
+                '<div><span>%M</span> <i>Minutes</i></div> ' +
+                '<div><span>%S</span> <i>Seconds</i></div>'
             ));
         });
-    
-        
-        
-        
+
+
+
+
         /*----------------------------------------------------
           CONTACT FORM
         ----------------------------------------------------*/
@@ -987,16 +1000,16 @@ Author URI: gnodesign.com
         $("input, textarea").on("change keyup", function (event) {
             $("input, textarea").css('border-color', '');
         });
-        
-        
-        
-        
+
+
+
+
         /*----------------------------------------------------
           ISOTOPE
         ----------------------------------------------------*/
         var isotope = $('.isotope');
-        
-        isotope.imagesLoaded( function() {
+
+        isotope.imagesLoaded(function () {
             // init Isotope after all images have loaded
             isotope.isotope({
                 // options
@@ -1004,10 +1017,10 @@ Author URI: gnodesign.com
                 transitionDuration: '0.8s',
             });
         });
-        
-        
-        
-        
+
+
+
+
         /*----------------------------------------------------
          GOOGLE ANALYTICS
         ----------------------------------------------------*/
@@ -1016,9 +1029,9 @@ Author URI: gnodesign.com
         var script = document.createElement('script');
         script.src = "assets/js/google-analytics.js";
         document.body.appendChild(script);
-        
-        
-        
+
+
+
 
 
     }); //end of document ready function

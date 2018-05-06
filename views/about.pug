@@ -5,10 +5,14 @@ block content
   include includes/header.pug
 
   // =============== START OF PAGE HEADER ===============
-  section.page-header.overlay-gradient(style='background: url(assets/images/posters/movie-collection.jpg);')
+  section.page-header.overlay-gradient(style='background: url(https://images.unsplash.com/photo-1512149154706-f9b30ded17ad?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0ec8dfaf1252ed0dd130b999c8815d9f&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb);')
     .container
       .inner
         h2.title Sobre El Sitio
+        ol.breadcrumb
+          li
+            a(href='/') Inicio
+          li Sobre El Sitio
   // =============== END OF PAGE HEADER ===============
   // =============== START OF MAIN ===============
   main.blog-detail.ptb100
@@ -21,45 +25,60 @@ block content
             // Content
             .post-content
               h3.title Movie Search
-              ul.post-meta
-                li 6 de Mayo de 2018
               p
-                strong Movie Search 
-                | no es una web comercial. Es una webapp desarrollada para ampliar los conocimientos del desarrollador.
-              p Todo el código del proyecto está bajo licencia 
+                strong Movie Search
+                |  no es una web comercial. Es una webapp desarrollada para ampliar los conocimientos del desarrollador.
+              p
+                | Todo el código del proyecto está bajo licencia 
                 strong MIT
                 | .
               p
-                strong Movie Search 
-                | está desarrollada integramente en 
-                a(href="https://nodejs.org") NodeJS
+                strong Movie Search
+                |  está desarrollada integramente en 
+                a(href='https://nodejs.org') NodeJS
                 | . La información de las películas y series de televisión se realiza a través del uso de la 
-                strong API 
-                | de 
-                a(href="http://themoviedb.org") TheMovieDB
+                strong API
+                |  de 
+                a(href='http://themoviedb.org/') TheMovieDB
                 | .
-
-              p El tema de la página es de 
-                a(href="https://themeforest.net/item/movify-movies-tv-shows-cinema-html-template/21561137") Gnodesign
-                | .
-
               p
-                | Si deseas hacer uso del código de 
-                strong Movie Search 
-                | simplemente has de modificar el código del archivo 
-                strong
-                  em themoviedb.js 
-                | y reemplazar 
-                em YOUR_API_KEY 
-                | por tu código de TheMovieBD.
-                pre.
-                  const themoviedb = {
-                    API_KEY: "YOUR_API_KEY",
-                    url: "https://api.themoviedb.org/3",
-                    url_images_original: "http://image.tmdb.org/t/p/original",
-                    url_images_w500: "http://image.tmdb.org/t/p/w500"
-                  };
-                  
+                | El tema de la página es de 
+                a(href='https://themeforest.net/item/movify-movies-tv-shows-cinema-html-template/21561137') Gnodesign
+                | .
+              h4 Instalación
+              p Es muy sencillo instalar Movie Search y todas las bibliotecas relacionadas.
+              pre
+                code.bash.hljs 
+                  | # instalar movie-search en el equipo en cuestión
+                  | npm install
+              p
+                | Simplemente con ese comando dentro de la carpeta de 
+                strong Movie Search
+                |  ya se isntalarán todos los archivos necesarios.
+              h4 Modo de uso
+              p
+                | Para hacer uso de 
+                strong Movie Search
+                |  simplemente hace falta tener una 
+                em clave API
+                |  facilitada por 
+                strong TheMovieDB
+                | . Una vez con dicha 
+                strong API
+                |  has de abrir el fichero 
+                code themoviedb.js
+                |  y reemplazar el texto 
+                em YOUR_API_KEY
+                |  por el suyo correcto.
+              pre
+                code.javascript.hljs
+                  | const themoviedb = {
+                  |  API_KEY: "YOUR_API_KEY",
+                  |  url: "https://api.themoviedb.org/3",
+                  |  url_images_original: "http://image.tmdb.org/t/p/original",
+                  |  url_images_w500: "http://image.tmdb.org/t/p/w500"
+                  |};
+
           // End of Blog Post
           
       // End of Row

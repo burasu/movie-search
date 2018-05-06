@@ -1,5 +1,5 @@
-# movie-search
-6 de Mayo de 2018
+![alt text][logo]
+[logo]: https://raw.githubusercontent.com/burasu/movie-search/master/public/assets/images/logo.png "Movie Search"
 
 **Movie Search** no es una web comercial. Es una webapp desarrollada para ampliar los conocimientos del desarrollador.
 

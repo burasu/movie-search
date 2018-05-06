@@ -21,11 +21,11 @@ block content
     .search-form-wrapper.search-form-rev
       .container
         // ===== START OF SEARCH FORM =====
-        form#search-form-1(method="get")
+        form#search-form-1(method="get" action="/movies")
           .row.justify-content-center
             .col-md-8.col-sm-10.col-12
               .form-group
-                input#search-keyword.form-control(name='search-keyword', type='text', value='', placeholder='Introduzca el título de una Película o una Serie de TV')
+                input#search-keyword.form-control(name='search', type='text', value='', placeholder='Introduzca el título de una Película')
                 button.btn.btn-main.btn-effect(type='submit')
                   i.fa.fa-search
         // ===== END OF SEARCH FORM =====
