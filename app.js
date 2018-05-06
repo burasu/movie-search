@@ -15,9 +15,11 @@ app.set("view engine", "pug");
 // Configuración de las direrentes rutas
 const mainRoutes = require("./routes");
 const movieRoutes = require("./routes/movie.js");
+const aboutRoutes = require("./routes/about.js");
 
 app.use(mainRoutes);
 app.use("/movie", movieRoutes);
+app.use("/about", aboutRoutes);
 
 app.use((req, res, next) => {
   console.log("b");

@@ -1,0 +1,95 @@
+extends layout
+
+block content
+
+  include includes/header.pug
+
+  // =============== START OF PAGE HEADER ===============
+  section.page-header.overlay-gradient(style='background: url(assets/images/posters/movie-collection.jpg);')
+    .container
+      .inner
+        h2.title Sobre El Sitio
+  // =============== END OF PAGE HEADER ===============
+  // =============== START OF MAIN ===============
+  main.blog-detail.ptb100
+    .container
+      // Start of Row
+      .row.justify-content-center
+        .col-md-8.col-sm-12
+          // Start of Blog Post
+          article.blog-post-detail
+            // Content
+            .post-content
+              h3.title Movie Search
+              ul.post-meta
+                li 6 de Mayo de 2018
+              p
+                strong Movie Search 
+                | no es una web comercial. Es una webapp desarrollada para ampliar los conocimientos del desarrollador.
+              p Todo el código del proyecto está bajo licencia 
+                strong MIT
+                | .
+              p
+                strong Movie Search 
+                | está desarrollada integramente en 
+                a(href="https://nodejs.org") NodeJS
+                | . La información de las películas y series de televisión se realiza a través del uso de la 
+                strong API 
+                | de 
+                a(href="http://themoviedb.org") TheMovieDB
+                | .
+
+              p El tema de la página es de 
+                a(href="https://themeforest.net/item/movify-movies-tv-shows-cinema-html-template/21561137") Gnodesign
+                | .
+
+              p
+                | Si deseas hacer uso del código de 
+                strong Movie Search 
+                | simplemente has de modificar el código del archivo 
+                strong
+                  em themoviedb.js 
+                | y reemplazar 
+                em YOUR_API_KEY 
+                | por tu código de TheMovieBD.
+                pre.
+                  const themoviedb = {
+                    API_KEY: "YOUR_API_KEY",
+                    url: "https://api.themoviedb.org/3",
+                    url_images_original: "http://image.tmdb.org/t/p/original",
+                    url_images_w500: "http://image.tmdb.org/t/p/w500"
+                  };
+
+
+              // Start of Social Buttons
+              .mt30
+                ul.social-btns
+                  // Social Media
+                  li
+                    a.social-btn-roll.facebook(href='#')
+                      .social-btn-roll-icons
+                        i.social-btn-roll-icon.fa.fa-facebook
+                        i.social-btn-roll-icon.fa.fa-facebook
+                  // Social Media
+                  li
+                    a.social-btn-roll.twitter(href='#')
+                      .social-btn-roll-icons
+                        i.social-btn-roll-icon.fa.fa-twitter
+                        i.social-btn-roll-icon.fa.fa-twitter
+                  // Social Media
+                  li
+                    a.social-btn-roll.google-plus(href='#')
+                      .social-btn-roll-icons
+                        i.social-btn-roll-icon.fa.fa-google-plus
+                        i.social-btn-roll-icon.fa.fa-google-plus
+                  // Social Media
+                  li
+                    a.social-btn-roll.github(href='#')
+                      .social-btn-roll-icons
+                        i.social-btn-roll-icon.fa.fa-github
+                        i.social-btn-roll-icon.fa.fa-github
+              // End of Social Buttons
+          // End of Blog Post
+          
+      // End of Row
+  // =============== END OF MAIN ===============

@@ -1,22 +1,32 @@
 extends layout.pug
 
 block content
-  .row.mt-5.pt-5
-    .col.text-center
-      h2 
-        | Bienvenido a 
-        strong Movie Search
-      h5 Este sitio es sólo de pruebas
-      br
-      p
-        | Desarrollado usando 
-        a(href='https://nodejs.org/') Node.js 
-        | y 
-        a(href='http://expressjs.com/') Express 
-        | y atacando a la API de 
-        a(href='https://www.themoviedb.org') themoviedb.org 
-        | obtiene los datos de las peliculas buscadas.
-      p
-        | El estilo se ha conseguido usando 
-        a(href='https://mdbootstrap.com/') Material Design for Bootstrap 4
-        | .
+  
+  include includes/header_index.pug
+
+  // =============== START OF SLIDER REVOLUTION SECTION ===============
+  section#slider.full-slider
+    .rev-slider-wrapper.fullscreen-container.overlay-gradient
+      #fullscreen-slider.rev_slider.fullscreenbanner(style='display:none', data-version='5.4.1')
+        ul
+          // ===== SLIDE NR. 1 =====
+          li(data-transition='fade')
+            // MAIN IMAGE
+            img.rev-slidebg(src='https://images.unsplash.com/photo-1509564324749-471bd272e1ff?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e5f82aecde627bc4c5f86faad7686331&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb', alt='Image', title='slider-bg', data-bgposition='center center', data-bgfit='cover', data-bgrepeat='no-repeat', data-bgparallax='10', data-no-retina='')
+            // LAYER NR. 1
+            .tp-caption.tp-resizeme(data-x='center', data-hoffset='', data-y='middle', data-voffset="['-30','-30','-30','-30']", data-responsive_offset='on', data-fontsize="['60','50','40','30']", data-lineheight="['60','50','40','30']", data-whitespace='nowrap', data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":500,"frame":"999","to":"auto:auto;","ease":"Power3.easeInOut"}]', style='z-index: 5; color: #fff; font-weight: 900;')
+              | Empiece la búsqueda ahora
+    // ===== END OF REV SLIDER WRAPPER =====
+    // ===== START OF SEARCH FORM WRAPPER =====
+    .search-form-wrapper.search-form-rev
+      .container
+        // ===== START OF SEARCH FORM =====
+        form#search-form-1(method="get")
+          .row.justify-content-center
+            .col-md-8.col-sm-10.col-12
+              .form-group
+                input#search-keyword.form-control(name='search-keyword', type='text', value='', placeholder='Introduzca el título de una Película o una Serie de TV')
+                button.btn.btn-main.btn-effect(type='submit')
+                  i.fa.fa-search
+        // ===== END OF SEARCH FORM =====
+    // ===== END OF SEARCH FORM WRAPPER =====

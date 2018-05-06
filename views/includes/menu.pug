@@ -1,0 +1,32 @@
+.container-fluid
+  // ====== Start of Navbar ======
+  nav.navbar.navbar-expand-lg
+    a.navbar-brand(href='/')
+      // INSERT YOUR LOGO HERE
+      img.logo(src='assets/images/logo.png', alt='logo', width='150')
+      // INSERT YOUR WHITE LOGO HERE
+      img.logo-white(src='assets/images/logo-white.png', alt='white logo', width='150')
+    button#mobile-nav-toggler.hamburger.hamburger--collapse(type='button')
+      span.hamburger-box
+        span.hamburger-inner
+    // ====== Start of #main-nav ======
+    #main-nav.navbar-collapse
+      // ====== Start of Main Menu ======
+      ul#main-menu.navbar-nav.mx-auto
+        li.nav-item
+          a.nav-link(href='/') Inicio
+        li.nav-item
+          a.nav-link(href='#') Películas
+        li.nav-item
+          a.nav-link(href='#') Series de TV
+        li.nav-item
+          a.nav-link(href='/about') Sobre el sitio
+      // ====== End of Main Menu ======
+      // ====== Start of Extra Nav ======
+      ul.navbar-nav.extra-nav
+        li.nav-item
+          a.nav-link.toggle-search(href='#')
+            i.fa.fa-search
+      // ====== End of Extra Nav ======
+    // ====== End of #main-nav ======
+  // ====== End of Navbar ======
