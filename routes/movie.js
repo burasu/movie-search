@@ -22,6 +22,7 @@ router.get("/:id", (req, res, next) => {
 
       if (data.status_code === 34 || data.status_code === 7) {
         next(data);
+        return;
       } else {
         // Obtenemos la fecha del estreno y la formateamos
         let release_date = moment(data.release_date).format("LL");
@@ -51,6 +52,7 @@ router.get("/:id", (req, res, next) => {
       error.status_code = 500;
       error.status_message = "Internal Server Error";
       next(error);
+      return;
     }
   });
 });

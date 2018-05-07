@@ -12,7 +12,7 @@ router.get("/movies", (req, res, next) => {
   const search = req.query.search;
   let total_results = 0;
 
-  if (search != undefined) {
+  if (typeof search !== "undefined") {
     let search_query = querystring.escape(search);
     const url = `${themoviedb.url}/search/movie?api_key=${
       themoviedb.API_KEY
@@ -24,6 +24,7 @@ router.get("/movies", (req, res, next) => {
 
         if (data.status_code === 7) {
           next(data);
+          return;
         } else {
           total_results = data.total_results;
           res.render("movies", {
@@ -36,10 +37,11 @@ router.get("/movies", (req, res, next) => {
         error.status_code = 500;
         error.status_message = "Internal Server Error";
         next(error);
+        return;
       }
     });
   } else {
-    res.render("index");
+    res.redirect(301, "/");
   }
 });
 
