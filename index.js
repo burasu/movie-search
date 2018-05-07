@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const engines = require("consolidate");
 
 // Configuración de la app
 const app = express();
@@ -10,6 +11,8 @@ app.use(
   })
 );
 app.use("/", express.static("public"));
+app.engine("pug", engines.pug);
+app.set("views", "./views");
 app.set("view engine", "pug");
 
 // Configuración de las direrentes rutas
