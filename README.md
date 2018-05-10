@@ -8,6 +8,10 @@ Todo el código del proyecto está bajo licencia **MIT**.
 
 El tema de la página es de [Gnodesign](https://themeforest.net/item/movify-movies-tv-shows-cinema-html-template/21561137).
 
+## Demo
+
+Puedes ver una demo operativa en [https://movie-search-bfs.herokuapp.com/](https://movie-search-bfs.herokuapp.com/).
+
 ## Instalación
 
 Es muy sencillo instalar Movie Search y todas las bibliotecas relacionadas.
@@ -21,7 +25,7 @@ Simplemente con ese comando dentro de la carpeta de **Movie Search** ya se isnta
 
 ## Modo de uso
 
-Para hacer uso de **Movie Search** simplemente hace falta tener una *clave API* facilitada por **TheMovieDB**. Una vez con dicha **API** has de abrir el fichero `themoviedb.js` y reemplazar el texto *YOUR_API_KEY* por el suyo correcto.
+Para hacer uso de **Movie Search** simplemente hace falta tener una _clave API_ facilitada por **TheMovieDB**. Una vez con dicha **API** has de abrir el fichero `themoviedb.js` y reemplazar el texto _YOUR_API_KEY_ por el suyo correcto.
 
 ```js
 const themoviedb = {
